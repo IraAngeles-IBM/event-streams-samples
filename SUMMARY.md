@@ -18,3 +18,10 @@
 - [Local Docker](kafka-python-console-sample/docs/Docker_Local.md)
 - [Cloud Foundry](kafka-python-console-sample/docs/Cloud_Foundry.md)
 - [Kubernetes Service](kafka-python-console-sample/docs/Kubernetes_Service.md)
+
+## Other Examples and Tutorials
+
+- [kafka-connect](kafka-connect/README.md)
+- [kafka-mirrormaker](kafka-mirrormaker/README.md) 
+- [IBM Messaging Github Repo](https://github.com/ibm-messaging)
+
