@@ -1,0 +1,341 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Local Docker · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Cloud_Foundry.html" />
+    
+    
+    <link rel="prev" href="Local.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">IBM Cloud Sign-up</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <a target="_blank" href="https://ibm.biz/signupcloud">
+            
+                    
+                    IBM Cloud Sign-up
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">IBM Event Streams for Node.js</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="Local.html">
+            
+                <a href="Local.html">
+            
+                    
+                    Local setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="Docker_Local.html">
+            
+                <a href="Docker_Local.html">
+            
+                    
+                    Local Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="Cloud_Foundry.html">
+            
+                <a href="Cloud_Foundry.html">
+            
+                    
+                    Cloud Foundry
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="Kubernetes_Service.html">
+            
+                <a href="Kubernetes_Service.html">
+            
+                    
+                    Kubernetes Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Local Docker</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="running-in-docker-locally">Running in Docker Locally</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To build and run the sample, you must have the done the following:</p>
+<ul>
+<li>Obtain this repository&apos;s contents, either use <code>git</code> or just download the samples as a ZIP</li>
+<li>Provision an <a href="https://cloud.ibm.com/catalog/services/event-streams" target="_blank">Event Streams Service Instance</a> in <a href="https://cloud.ibm.com/" target="_blank">IBM Cloud&#xAE;</a></li>
+<li>Install <a href="https://docs.docker.com/install/" target="_blank">Docker</a></li>
+</ul>
+<h2 id="run-the-application">Run the Application</h2>
+<ol>
+<li><p>Build the container image from the <code>Dockerfile</code>:</p>
+<pre><code class="lang-shell"> docker build -t nodejs-console-sample .
+</code></pre>
+</li>
+<li><p>Export the Event Streams for IBM Cloud instance credentials:</p>
+<p> From the Event Streams for IBM Cloud instance dashboard, click <code>Service Credentials</code> and select or create a new one. Copy its content and export it as below:</p>
+<pre><code class="lang-shell"> export VCAP_SERVICES=&apos;{
+     &quot;instance_id&quot;: &quot;...&quot;,
+     &quot;mqlight_lookup_url&quot;: &quot;...&quot;,
+     &quot;api_key&quot;: &quot;...&quot;,
+     &quot;kafka_admin_url&quot;: &quot;....&quot;,
+     &quot;kafka_rest_url&quot;: &quot;...&quot;,
+     &quot;kafka_brokers_sasl&quot;: [
+       ...
+     ],
+     &quot;user&quot;: &quot;...&quot;,
+     &quot;password&quot;: &quot;...&quot;
+ }&apos;
+</code></pre>
+</li>
+<li><p>Run the container image</p>
+<pre><code class="lang-shell"> docker run -e VCAP_SERVICES=&quot;$VCAP_SERVICES&quot; nodejs-console-sample
+</code></pre>
+</li>
+</ol>
+<h2 id="further-references">Further references</h2>
+<p>If you want find out more about Docker then check the following document:</p>
+<p><a href="https://docs.docker.com/install/overview/" target="_blank">Docker documentation</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Local.html" class="navigation navigation-prev " aria-label="Previous page: Local setup">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Cloud_Foundry.html" class="navigation navigation-next " aria-label="Next page: Cloud Foundry">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Local Docker","level":"2.2","depth":1,"next":{"title":"Cloud Foundry","level":"2.3","depth":1,"path":"kafka-nodejs-console-sample/docs/Cloud_Foundry.md","ref":"kafka-nodejs-console-sample/docs/Cloud_Foundry.md","articles":[]},"previous":{"title":"Local setup","level":"2.1","depth":1,"path":"kafka-nodejs-console-sample/docs/Local.md","ref":"kafka-nodejs-console-sample/docs/Local.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-nodejs-console-sample/docs/Docker_Local.md","mtime":"2020-07-02T03:56:54.992Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T07:10:03.130Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
