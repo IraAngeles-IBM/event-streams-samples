@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cloud Foundry · GitBook</title>
+        <title>Kubernetes Service · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Kubernetes_Service.html" />
     
-    
-    <link rel="prev" href="Docker_Local.html" />
+    <link rel="prev" href="Cloud_Foundry.html" />
     
 
     </head>
@@ -124,9 +122,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="Local.html">
+        <li class="chapter " data-level="2.1" data-path="../../kafka-nodejs-console-sample/docs/Local.html">
             
-                <a href="Local.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Local.html">
             
                     
                     Local setup
@@ -137,9 +135,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="Docker_Local.html">
+        <li class="chapter " data-level="2.2" data-path="../../kafka-nodejs-console-sample/docs/Docker_Local.html">
             
-                <a href="Docker_Local.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Docker_Local.html">
             
                     
                     Local Docker
@@ -150,9 +148,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.3" data-path="Cloud_Foundry.html">
+        <li class="chapter " data-level="2.3" data-path="../../kafka-nodejs-console-sample/docs/Cloud_Foundry.html">
             
-                <a href="Cloud_Foundry.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Cloud_Foundry.html">
             
                     
                     Cloud Foundry
@@ -163,9 +161,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="Kubernetes_Service.html">
+        <li class="chapter " data-level="2.4" data-path="../../kafka-nodejs-console-sample/docs/Kubernetes_Service.html">
             
-                <a href="Kubernetes_Service.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Kubernetes_Service.html">
             
                     
                     Kubernetes Service
@@ -183,9 +181,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../../kafka-python-console-sample/docs/Local.html">
+        <li class="chapter " data-level="3.1" data-path="Local.html">
             
-                <a href="../../kafka-python-console-sample/docs/Local.html">
+                <a href="Local.html">
             
                     
                     Local setup
@@ -196,9 +194,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../kafka-python-console-sample/docs/Docker_Local.html">
+        <li class="chapter " data-level="3.2" data-path="Docker_Local.html">
             
-                <a href="../../kafka-python-console-sample/docs/Docker_Local.html">
+                <a href="Docker_Local.html">
             
                     
                     Local Docker
@@ -209,9 +207,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="../../kafka-python-console-sample/docs/Cloud_Foundry.html">
+        <li class="chapter " data-level="3.3" data-path="Cloud_Foundry.html">
             
-                <a href="../../kafka-python-console-sample/docs/Cloud_Foundry.html">
+                <a href="Cloud_Foundry.html">
             
                     
                     Cloud Foundry
@@ -222,9 +220,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../kafka-python-console-sample/docs/Kubernetes_Service.html">
+        <li class="chapter active" data-level="3.4" data-path="Kubernetes_Service.html">
             
-                <a href="../../kafka-python-console-sample/docs/Kubernetes_Service.html">
+                <a href="Kubernetes_Service.html">
             
                     
                     Kubernetes Service
@@ -265,7 +263,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Cloud Foundry</a>
+        <a href="../.." >Kubernetes Service</a>
     </h1>
 </div>
 
@@ -280,31 +278,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="running-in-ibm-cloud-foundry">Running in IBM Cloud Foundry</h1>
+                                <h1 id="running-in-ibm-cloud-kubernetes-service">Running in IBM Cloud Kubernetes Service</h1>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>To build and run the sample, you must have the done the following:</p>
 <ul>
 <li>Obtain this repository&apos;s contents, either use <code>git</code> or just download the samples as a ZIP</li>
 <li>Install the <a href="https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli" target="_blank">IBM Cloud CLI</a></li>
-<li>Provision an <a href="https://cloud.ibm.com/catalog/services/event-streams" target="_blank">Event Streams Service Instance</a> in <a href="https://cloud.ibm.com/" target="_blank">IBM Cloud&#xAE;</a></li>
-</ul>
-<h2 id="classic-or-standardenterprise-plan">Classic or Standard/Enterprise Plan?</h2>
-<p><strong>It&apos;s important to know which Event Streams for IBM Cloud plan you&apos;re using as the sample deployment steps are subtly different on each plan respectively.</strong></p>
-<p>By this point, you should have an Event Streams for IBM Cloud instance provisioned. If you haven&apos;t done this step yet, please refer to the main <a href="../README.md">readme</a>.</p>
-<p>If you are not sure what type of Event Streams for IBM Cloud instance you have then you can find this information out by visiting IBM Cloud&apos;s web console <a href="https://cloud.ibm.com/resources" target="_blank">dashboard</a>.</p>
-<p><em>Please make sure you are in the appropriate Region, Account, Organization and Space where you provisioned your Event Streams instance!</em></p>
-<ul>
-<li>Event Streams for IBM Cloud Classic plan services are &quot;Cloud Foundry Services&quot; with the plan column showing &quot;Classic&quot;.</li>
-<li>Event Streams for IBM Cloud Standard plan services are &quot;Services&quot; with the plan column showing &quot;Standard&quot;.</li>
-<li>Event Streams for IBM Cloud Enterprise plan services are &quot;Services&quot; with the plan column showing &quot;Enterprise&quot;.</li>
+<li>Install the <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">Kubernetes CLI</a></li>
+<li>Provision a <a href="https://cloud.ibm.com/catalog/services/event-streams" target="_blank">Event Streams Service Instance</a> in <a href="https://cloud.ibm.com/" target="_blank">IBM Cloud&#xAE;</a></li>
+<li>Provision a <a href="https://cloud.ibm.com/kubernetes/catalog/cluster" target="_blank">Kubernetes Service instance</a> in <a href="https://cloud.ibm.com/" target="_blank">IBM Cloud&#xAE;</a></li>
 </ul>
 <h2 id="deploy-the-application">Deploy the Application</h2>
-<p>As the Classic and Standard/Enterprise Plan deployment steps are subtly different, we split the deployment steps into separate sections. Please navigate to the appropriate page(s):</p>
-<h3 id="classic-plan-deployment-guide"><a href="CF_Classic_Plan.md">Classic Plan Deployment Guide</a></h3>
-<h3 id="standardenterprise-plan-deployment-guide"><a href="CF_Standard_Enterprise_Plan.md">Standard/Enterprise Plan Deployment Guide</a></h3>
+<ol>
+<li><p>From the Event Streams for IBM Cloud instance dashboard, click <code>Service Credentials</code> and select or create a new one. Copy its content. </p>
+</li>
+<li><p>To deploy the application you first need to bind the Event Streams service instance to the cluster. Replace <code>&lt;Service Credentials&gt;</code> with the content copied in step 1.</p>
+<pre><code class="lang-shell"> kubectl create secret generic eventstreams-binding --from-literal=binding=&apos;&lt;Service Credentials&gt;&apos;
+</code></pre>
+<p> The command above creates a secret in your cluster named <code>eventstreams-binding</code>. </p>
+</li>
+<li><p><a href="https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#cs_cli_configure" target="_blank">Configure the CLI to run kubectl</a></p>
+</li>
+<li><p>Deploy the application in the cluster:</p>
+<pre><code class="lang-shell"> kubectl apply -f kafka-python-console-sample.yaml
+</code></pre>
+</li>
+<li>Access the application logs:<pre><code class="lang-shell"> kubectl logs kafka-python-console-sample --follow
+</code></pre>
+</li>
+</ol>
 <h2 id="further-references">Further references</h2>
-<p>If you want find out more about Cloud Foundry applications then check the following documents:</p>
-<p><a href="http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html" target="_blank">Cloud Foundry manifest documentation</a></p>
+<p>If you want find out more about IBM Cloud Kubernetes Service or Kubernetes then check the following documents:</p>
+<p><a href="https://www.ibm.com/cloud/container-service" target="_blank">IBM Cloud Kubernetes Service</a></p>
+<p><a href="https://kubernetes.io/docs/home/" target="_blank">Kubernetes Documentation</a></p>
 
                                 
                                 </section>
@@ -332,14 +338,10 @@
 
             
                 
-                <a href="Docker_Local.html" class="navigation navigation-prev " aria-label="Previous page: Local Docker">
+                <a href="Cloud_Foundry.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Cloud Foundry">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="Kubernetes_Service.html" class="navigation navigation-next " aria-label="Next page: Kubernetes Service">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -348,7 +350,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cloud Foundry","level":"2.3","depth":1,"next":{"title":"Kubernetes Service","level":"2.4","depth":1,"path":"kafka-nodejs-console-sample/docs/Kubernetes_Service.md","ref":"kafka-nodejs-console-sample/docs/Kubernetes_Service.md","articles":[]},"previous":{"title":"Local Docker","level":"2.2","depth":1,"path":"kafka-nodejs-console-sample/docs/Docker_Local.md","ref":"kafka-nodejs-console-sample/docs/Docker_Local.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-nodejs-console-sample/docs/Cloud_Foundry.md","mtime":"2020-07-02T03:56:54.992Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T07:19:29.018Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Kubernetes Service","level":"3.4","depth":1,"previous":{"title":"Cloud Foundry","level":"3.3","depth":1,"path":"kafka-python-console-sample/docs/Cloud_Foundry.md","ref":"kafka-python-console-sample/docs/Cloud_Foundry.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-python-console-sample/docs/Kubernetes_Service.md","mtime":"2020-07-02T03:56:55.018Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T07:19:29.018Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

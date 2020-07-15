@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Local setup · GitBook</title>
+        <title>Local Docker · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Docker_Local.html" />
+    <link rel="next" href="Cloud_Foundry.html" />
     
+    
+    <link rel="prev" href="Local.html" />
     
 
     </head>
@@ -122,9 +124,9 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="Local.html">
+        <li class="chapter " data-level="2.1" data-path="../../kafka-nodejs-console-sample/docs/Local.html">
             
-                <a href="Local.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Local.html">
             
                     
                     Local setup
@@ -135,9 +137,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="Docker_Local.html">
+        <li class="chapter " data-level="2.2" data-path="../../kafka-nodejs-console-sample/docs/Docker_Local.html">
             
-                <a href="Docker_Local.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Docker_Local.html">
             
                     
                     Local Docker
@@ -148,9 +150,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="Cloud_Foundry.html">
+        <li class="chapter " data-level="2.3" data-path="../../kafka-nodejs-console-sample/docs/Cloud_Foundry.html">
             
-                <a href="Cloud_Foundry.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Cloud_Foundry.html">
             
                     
                     Cloud Foundry
@@ -161,9 +163,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="Kubernetes_Service.html">
+        <li class="chapter " data-level="2.4" data-path="../../kafka-nodejs-console-sample/docs/Kubernetes_Service.html">
             
-                <a href="Kubernetes_Service.html">
+                <a href="../../kafka-nodejs-console-sample/docs/Kubernetes_Service.html">
             
                     
                     Kubernetes Service
@@ -181,9 +183,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../../kafka-python-console-sample/docs/Local.html">
+        <li class="chapter " data-level="3.1" data-path="Local.html">
             
-                <a href="../../kafka-python-console-sample/docs/Local.html">
+                <a href="Local.html">
             
                     
                     Local setup
@@ -194,9 +196,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../kafka-python-console-sample/docs/Docker_Local.html">
+        <li class="chapter active" data-level="3.2" data-path="Docker_Local.html">
             
-                <a href="../../kafka-python-console-sample/docs/Docker_Local.html">
+                <a href="Docker_Local.html">
             
                     
                     Local Docker
@@ -207,9 +209,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="../../kafka-python-console-sample/docs/Cloud_Foundry.html">
+        <li class="chapter " data-level="3.3" data-path="Cloud_Foundry.html">
             
-                <a href="../../kafka-python-console-sample/docs/Cloud_Foundry.html">
+                <a href="Cloud_Foundry.html">
             
                     
                     Cloud Foundry
@@ -220,9 +222,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../kafka-python-console-sample/docs/Kubernetes_Service.html">
+        <li class="chapter " data-level="3.4" data-path="Kubernetes_Service.html">
             
-                <a href="../../kafka-python-console-sample/docs/Kubernetes_Service.html">
+                <a href="Kubernetes_Service.html">
             
                     
                     Kubernetes Service
@@ -263,7 +265,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Local setup</a>
+        <a href="../.." >Local Docker</a>
     </h1>
 </div>
 
@@ -278,48 +280,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ibm-event-streams-for-ibm-cloud-kafka-nodejs-console-sample-application-local-development-guide">IBM Event Streams for IBM Cloud Kafka Node.js console sample application: Local Development guide</h1>
-<p>As pushing the application into IBM Cloud&#xAE; does not require you to build the application locally, this guide is here to guide you through the process, should you wish to build the application locally.</p>
-<p>We will not discuss establishing a connection from your laptop to Event Streams for IBM Cloud. This is described in the <a href="https://cloud.ibm.com/docs/services/EventStreams?topic=eventstreams-connecting#connecting" target="_blank"> connection guide</a>.</p>
+                                <h1 id="running-in-docker-locally">Running in Docker Locally</h1>
 <h2 id="prerequisites">Prerequisites</h2>
+<p>To build and run the sample, you must have the done the following:</p>
 <ul>
-<li><a href="https://nodejs.org/en/" target="_blank">Node.js</a> 8.X LTS</li>
-<li>[node-gyp] (<a href="https://www.npmjs.com/package/node-gyp" target="_blank">https://www.npmjs.com/package/node-gyp</a>)</li>
+<li>Obtain this repository&apos;s contents, either use <code>git</code> or just download the samples as a ZIP</li>
+<li>Provision an <a href="https://cloud.ibm.com/catalog/services/event-streams" target="_blank">Event Streams Service Instance</a> in <a href="https://cloud.ibm.com/" target="_blank">IBM Cloud&#xAE;</a></li>
+<li>Install <a href="https://docs.docker.com/install/" target="_blank">Docker</a></li>
 </ul>
-<p>Node-rdkafka will build librdkafka automatically. You must ensure you have the dependencies listed below installed. For more details, see <a href="../../docs/librdkafka.md">librdakfka&apos;s instructions</a>.</p>
-<h5 id="linux">Linux</h5>
-<ul>
-<li>openssl-dev</li>
-<li>libsasl2-dev</li>
-<li>libsasl2-modules</li>
-<li>C++ toolchain</li>
-</ul>
-<h5 id="macos">macOS</h5>
-<ul>
-<li><a href="http://brew.sh/" target="_blank">Brew</a></li>
-<li><a href="https://developer.apple.com/xcode/" target="_blank">Apple Xcode command line tools</a></li>
-<li><code>openssl</code> via Brew</li>
-<li>Export <code>CPPFLAGS=-I/usr/local/opt/openssl/include</code> and <code>LDFLAGS=-L/usr/local/opt/openssl/lib</code></li>
-</ul>
-<h2 id="installing-dependencies">Installing dependencies</h2>
-<p>Run the following commands on your local machine, after the prerequisites for your environment have been completed:</p>
-<pre><code class="lang-shell">npm install
+<h2 id="run-the-application">Run the Application</h2>
+<ol>
+<li><p>Build the container image from the <code>Dockerfile</code>:</p>
+<pre><code class="lang-shell"> docker build -t python-console-sample .
 </code></pre>
-<h2 id="running-the-sample">Running the Sample</h2>
-<p>Once built, to run the sample, execute the following command:</p>
-<pre><code class="lang-shell">node app.js &lt;kafka_brokers_sasl&gt; &lt;api_key&gt; &lt;ca_location&gt;
+</li>
+<li><p>Export the Event Streams for IBM Cloud instance credentials:</p>
+<p> From the Event Streams for IBM Cloud instance dashboard, click <code>Service Credentials</code> and select or create a new one. Copy its content and export it as below:</p>
+<pre><code class="lang-shell"> export VCAP_SERVICES=&apos;{
+     &quot;instance_id&quot;: &quot;...&quot;,
+     &quot;mqlight_lookup_url&quot;: &quot;...&quot;,
+     &quot;api_key&quot;: &quot;...&quot;,
+     &quot;kafka_admin_url&quot;: &quot;....&quot;,
+     &quot;kafka_rest_url&quot;: &quot;...&quot;,
+     &quot;kafka_brokers_sasl&quot;: [
+       ...
+     ],
+     &quot;user&quot;: &quot;...&quot;,
+     &quot;password&quot;: &quot;...&quot;
+ }&apos;
 </code></pre>
-<p>To find the values for <code>&lt;kafka_brokers_sasl&gt;</code> and <code>&lt;api_key&gt;</code>, access your Event Streams instance in IBM Cloud&#xAE;, go to the <code>Service Credentials</code> tab and select the <code>Credentials</code> you want to use.  If your user value is <code>token</code>, specify that with the password seperated by a <code>:</code>.</p>
-<p><code>&lt;ca_location&gt;</code> is the path where the trusted SSL certificates are stored on your machine and is therefore system dependent. 
-For example:</p>
-<ul>
-<li>Ubuntu: /etc/ssl/certs</li>
-<li>RedHat: /etc/pki/tls/cert.pem</li>
-<li>macOS: /usr/local/etc/openssl/cert.pem from openssl installed by brew</li>
-</ul>
-<p><strong>Note</strong>: <code>&lt;kafka_brokers_sasl&gt;</code> must be a single string enclosed in quotes. For example: <code>&quot;host1:port1,host2:port2&quot;</code>. We recommend using all the Kafka hosts listed in the <code>Credentials</code> you selected.</p>
-<p>Alternatively, you can run only the producer or only the consumer by respectively appending the switches <code>-producer</code> or <code>-consumer</code>  to the command above.</p>
-<p>The sample will run indefinitely until interrupted. To stop the process, use <code>Ctrl+C</code>.</p>
+</li>
+<li><p>Run the container image</p>
+<pre><code class="lang-shell"> docker run -e VCAP_SERVICES=&quot;$VCAP_SERVICES&quot; python-console-sample
+</code></pre>
+</li>
+</ol>
+<h2 id="further-references">Further references</h2>
+<p>If you want find out more about Docker then check the following document:</p>
+<p><a href="https://docs.docker.com/install/overview/" target="_blank">Docker documentation</a></p>
 
                                 
                                 </section>
@@ -347,8 +345,12 @@ For example:</p>
 
             
                 
+                <a href="Local.html" class="navigation navigation-prev " aria-label="Previous page: Local setup">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="Docker_Local.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Local Docker">
+                
+                <a href="Cloud_Foundry.html" class="navigation navigation-next " aria-label="Next page: Cloud Foundry">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -359,7 +361,7 @@ For example:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Local setup","level":"2.1","depth":1,"next":{"title":"Local Docker","level":"2.2","depth":1,"path":"kafka-nodejs-console-sample/docs/Docker_Local.md","ref":"kafka-nodejs-console-sample/docs/Docker_Local.md","articles":[]},"previous":{"title":"IBM Cloud Sign-up","level":"1.2","depth":1,"url":"https://ibm.biz/signupcloud","ref":"https://ibm.biz/signupcloud","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-nodejs-console-sample/docs/Local.md","mtime":"2020-07-02T03:56:54.993Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T07:19:29.018Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Local Docker","level":"3.2","depth":1,"next":{"title":"Cloud Foundry","level":"3.3","depth":1,"path":"kafka-python-console-sample/docs/Cloud_Foundry.md","ref":"kafka-python-console-sample/docs/Cloud_Foundry.md","articles":[]},"previous":{"title":"Local setup","level":"3.1","depth":1,"path":"kafka-python-console-sample/docs/Local.md","ref":"kafka-python-console-sample/docs/Local.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-python-console-sample/docs/Docker_Local.md","mtime":"2020-07-02T03:56:55.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T07:19:29.018Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
