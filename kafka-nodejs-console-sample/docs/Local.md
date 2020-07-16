@@ -5,7 +5,7 @@ We will not discuss establishing a connection from your laptop to Event Streams 
 
 ## Prerequisites
 * [Node.js](https://nodejs.org/en/) 8.X LTS
-* [node-gyp] (https://www.npmjs.com/package/node-gyp)
+* [node-gyp](https://www.npmjs.com/package/node-gyp)
 
 Node-rdkafka will build librdkafka automatically. You must ensure you have the dependencies listed below installed. For more details, see [librdakfka's instructions](../../docs/librdkafka.md).
 
