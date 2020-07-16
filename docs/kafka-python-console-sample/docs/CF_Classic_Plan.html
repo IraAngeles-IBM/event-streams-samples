@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Local Docker · GitBook</title>
+        <title>Classic Plan Deployment Guide · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Cloud_Foundry.html" />
+    <link rel="next" href="CF_Standard_Enterprise_Plan.html" />
     
     
-    <link rel="prev" href="Local.html" />
+    <link rel="prev" href="../../kafka-nodejs-console-sample/docs/Cloud_Foundry.html" />
     
 
     </head>
@@ -164,7 +164,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.3.1" data-path="CF_Classic_Plan.html">
+        <li class="chapter active" data-level="2.3.1" data-path="CF_Classic_Plan.html">
             
                 <a href="CF_Classic_Plan.html">
             
@@ -228,7 +228,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="Docker_Local.html">
+        <li class="chapter " data-level="3.2" data-path="Docker_Local.html">
             
                 <a href="Docker_Local.html">
             
@@ -255,7 +255,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.3.1" data-path="CF_Classic_Plan.html">
+        <li class="chapter active" data-level="3.3.1" data-path="CF_Classic_Plan.html">
             
                 <a href="CF_Classic_Plan.html">
             
@@ -388,7 +388,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Local Docker</a>
+        <a href="../.." >Classic Plan Deployment Guide</a>
     </h1>
 </div>
 
@@ -403,44 +403,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="running-in-docker-locally">Running in Docker Locally</h1>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>To build and run the sample, you must have the done the following:</p>
+                                <h1 id="ibm-cloud-foundry-deployment-to-a-classic-plan-event-streams-for-ibm-cloud">IBM Cloud Foundry deployment to a Classic Plan Event Streams for IBM Cloud</h1>
+<h2 id="overview">Overview</h2>
+<p>To deploy and run the sample:</p>
 <ul>
-<li>Obtain this repository&apos;s contents, either use <code>git</code> or just download the samples as a ZIP</li>
-<li>Provision an <a href="https://cloud.ibm.com/catalog/services/event-streams" target="_blank">Event Streams Service Instance</a> in <a href="https://cloud.ibm.com/" target="_blank">IBM Cloud&#xAE;</a></li>
-<li>Install <a href="https://docs.docker.com/install/" target="_blank">Docker</a></li>
+<li>Setup your <code>manifest.yml</code> with your service details</li>
+<li>Use <code>ibmcloud cf push</code> to deploy the app to IBM Cloud Foundry</li>
+<li>Use <code>ibmcloud cf logs</code> to check the application.</li>
 </ul>
-<h2 id="run-the-application">Run the Application</h2>
+<h2 id="setup-the-manifestyml">Setup the manifest.yml</h2>
 <ol>
-<li><p>Build the container image from the <code>Dockerfile</code>:</p>
-<pre><code class="lang-shell"> docker build -t python-console-sample .
+<li>Select the Event Streams for IBM Cloud service you would like to bind your application to. Do this by replacing <code>&lt;YOUR_SERVICE_INSTANCE_NAME&gt;</code> with your actual service&apos;s name in <code>manifest.yml</code>:<pre><code class="lang-yaml"><span class="hljs-attr">services:</span>
+<span class="hljs-bullet"> -</span> <span class="hljs-string">&quot;&lt;YOUR_SERVICE_INSTANCE_NAME&gt;&quot;</span>
 </code></pre>
 </li>
-<li><p>Export the Event Streams for IBM Cloud instance credentials:</p>
-<p> From the Event Streams for IBM Cloud instance dashboard, click <code>Service Credentials</code> and select or create a new one. Copy its content and export it as below:</p>
-<pre><code class="lang-shell"> export VCAP_SERVICES=&apos;{
-     &quot;instance_id&quot;: &quot;...&quot;,
-     &quot;mqlight_lookup_url&quot;: &quot;...&quot;,
-     &quot;api_key&quot;: &quot;...&quot;,
-     &quot;kafka_admin_url&quot;: &quot;....&quot;,
-     &quot;kafka_rest_url&quot;: &quot;...&quot;,
-     &quot;kafka_brokers_sasl&quot;: [
-       ...
-     ],
-     &quot;user&quot;: &quot;...&quot;,
-     &quot;password&quot;: &quot;...&quot;
- }&apos;
-</code></pre>
-</li>
-<li><p>Run the container image</p>
-<pre><code class="lang-shell"> docker run -e VCAP_SERVICES=&quot;$VCAP_SERVICES&quot; python-console-sample
-</code></pre>
-</li>
+<li>Consider your domain: You might need to change this in the <code>manifest.yml</code> as the domain varies by IBM Cloud region. If unsure, just delete the domain line and IBM Cloud will pick the domain for you.</li>
 </ol>
-<h2 id="further-references">Further references</h2>
-<p>If you want find out more about Docker then check the following document:</p>
-<p><a href="https://docs.docker.com/install/overview/" target="_blank">Docker documentation</a></p>
+<h2 id="deploy-the-sample-to-ibm-cloud-foundry">Deploy the Sample to IBM Cloud Foundry</h2>
+<p>Before continuing, connect to IBM Cloud with the <a href="https://cloud.ibm.com/docs/cli?topic=cloud-cli-ibmcloud-cli" target="_blank">IBM Cloud command line interface</a>.</p>
+<p>Once connected to IBM Cloud, push the app:</p>
+<pre><code class="lang-shell">ibmcloud app push
+</code></pre>
+<h2 id="produce-and-consume-messages">Produce and Consume Messages</h2>
+<p>The sample application should have created the default sample topic and started producing and consuming messages in an infinite loop. View the logs to verify this:</p>
+<pre><code class="lang-shell">ibmcloud app logs kafka-python-console-sample
+</code></pre>
 
                                 
                                 </section>
@@ -468,12 +455,12 @@
 
             
                 
-                <a href="Local.html" class="navigation navigation-prev " aria-label="Previous page: Local setup">
+                <a href="../../kafka-nodejs-console-sample/docs/Cloud_Foundry.html" class="navigation navigation-prev " aria-label="Previous page: Cloud Foundry">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Cloud_Foundry.html" class="navigation navigation-next " aria-label="Next page: Cloud Foundry">
+                <a href="CF_Standard_Enterprise_Plan.html" class="navigation navigation-next " aria-label="Next page: Standard/Enterprise Plan Deployment Guide">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -484,7 +471,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Local Docker","level":"3.2","depth":1,"next":{"title":"Cloud Foundry","level":"3.3","depth":1,"path":"kafka-python-console-sample/docs/Cloud_Foundry.md","ref":"kafka-python-console-sample/docs/Cloud_Foundry.md","articles":[{"title":"Classic Plan Deployment Guide","level":"3.3.1","depth":2,"path":"kafka-python-console-sample/docs/CF_Classic_Plan.md","ref":"kafka-python-console-sample/docs/CF_Classic_Plan.md","articles":[]},{"title":"Standard/Enterprise Plan Deployment Guide","level":"3.3.2","depth":2,"path":"kafka-python-console-sample/docs/CF_Standard_Enterprise_Plan.md","ref":"kafka-python-console-sample/docs/CF_Standard_Enterprise_Plan.md","articles":[]}]},"previous":{"title":"Local setup","level":"3.1","depth":1,"path":"kafka-python-console-sample/docs/Local.md","ref":"kafka-python-console-sample/docs/Local.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-python-console-sample/docs/Docker_Local.md","mtime":"2020-07-02T03:56:55.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T03:56:37.743Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Classic Plan Deployment Guide","level":"2.3.1","depth":2,"next":{"title":"Standard/Enterprise Plan Deployment Guide","level":"2.3.2","depth":2,"path":"kafka-python-console-sample/docs/CF_Standard_Enterprise_Plan.md","ref":"kafka-python-console-sample/docs/CF_Standard_Enterprise_Plan.md","articles":[]},"previous":{"title":"Cloud Foundry","level":"2.3","depth":1,"path":"kafka-nodejs-console-sample/docs/Cloud_Foundry.md","ref":"kafka-nodejs-console-sample/docs/Cloud_Foundry.md","articles":[{"title":"Classic Plan Deployment Guide","level":"2.3.1","depth":2,"path":"kafka-python-console-sample/docs/CF_Classic_Plan.md","ref":"kafka-python-console-sample/docs/CF_Classic_Plan.md","articles":[]},{"title":"Standard/Enterprise Plan Deployment Guide","level":"2.3.2","depth":2,"path":"kafka-python-console-sample/docs/CF_Standard_Enterprise_Plan.md","ref":"kafka-python-console-sample/docs/CF_Standard_Enterprise_Plan.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-python-console-sample/docs/CF_Classic_Plan.md","mtime":"2020-07-02T03:56:55.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T03:56:37.743Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
