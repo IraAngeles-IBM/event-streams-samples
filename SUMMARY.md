@@ -2,7 +2,12 @@
 
 ## IBM Cloud Sign-up
 
-- [IBM Cloud Sign-up](  http://ibm.biz/create-ibm-cloud)
+- [IBM Cloud Sign-up](http://ibm.biz/create-ibm-cloud)
+
+## IBM Event Streams
+
+- [IBM Event Streams](https://ibm.github.io/event-streams)
+- [Create Event Streams Service in IBM Cloud](ibm-event-streams/ibm-event-streams.md)
 
 ## IBM Event Streams for Node.js 
 
@@ -30,6 +35,5 @@
 - [kafka-connect](kafka-connect/README.md)
 - [kafka-mirrormaker](kafka-mirrormaker/README.md) 
 - [Apache Kafka](https://developer.ibm.com/articles/an-introduction-to-apache-kafka/)
-- [IBM Event Streams](https://ibm.github.io/event-streams/ß)
 - [IBM Messaging Github Repo](https://github.com/ibm-messaging)
 

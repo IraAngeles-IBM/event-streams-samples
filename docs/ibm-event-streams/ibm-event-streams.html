@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>kafka-mirrormaker · GitBook</title>
+        <title>Create Event Streams Service in IBM Cloud · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../kafka-nodejs-console-sample/docs/Local.html" />
     
-    <link rel="prev" href="../kafka-connect/" />
     
 
     </head>
@@ -135,9 +135,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="../ibm-event-streams/ibm-event-streams.html">
+        <li class="chapter active" data-level="2.2" data-path="ibm-event-streams.html">
             
-                <a href="../ibm-event-streams/ibm-event-streams.html">
+                <a href="ibm-event-streams.html">
             
                     
                     Create Event Streams Service in IBM Cloud
@@ -350,9 +350,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.2" data-path="./">
+        <li class="chapter " data-level="5.2" data-path="../kafka-mirrormaker/">
             
-                <a href="./">
+                <a href="../kafka-mirrormaker/">
             
                     
                     kafka-mirrormaker
@@ -419,7 +419,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >kafka-mirrormaker</a>
+        <a href=".." >Create Event Streams Service in IBM Cloud</a>
     </h1>
 </div>
 
@@ -434,18 +434,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="kafka-mirrormaker">kafka-mirrormaker</h1>
-<p>This repository contains the artifacts required to build the <code>ibmcom/eventstreams-kafkamirrormaker</code> Docker image.</p>
-<p>This image contains <a href="http://kafka.apache.org/documentation/#basic_ops_mirror_maker" target="_blank">Kafka Mirror Maker</a> and can be used to replicate data between clusters.</p>
-<p>A prebuilt image is provided on DockerHub: <a href="https://hub.docker.com/r/ibmcom/eventstreams-kafkamirrormaker" target="_blank">https://hub.docker.com/r/ibmcom/eventstreams-kafkamirrormaker</a>.</p>
-<h2 id="running-the-image-in-kubernetes">Running the image in Kubernetes</h2>
-<p>Instructions for running the <code>eventstreams-kafkamirrormaker</code> image in Kubernetes can be found <a href="IKS/README.md">here</a>.</p>
-<h2 id="building-the-image">Building the image</h2>
-<p>To build the image yourself, complete these steps:</p>
+                                <h1 id="create-ibm-event-streams-service">Create IBM Event Streams Service</h1>
 <ol>
-<li>Build the docker image:<pre><code class="lang-shell"> docker build .
-</code></pre>
-If you want to use the sample <a href="IKS/kafka-mirrormaker.yaml">YAML file</a>, ensure that you update the image name with your own image name.</li>
+<li><p>Login to IBM Cloud and go to Catalog. Browse or search for <strong>event streams</strong></p>
+<p> <img src="images/catalog.png" alt="catalog"></p>
+</li>
+<li><p>Select <strong>Event Streams Service</strong>, <strong>Select a region</strong> or use default.  Select <strong>Lite</strong> pricing plan.  Enter unique <strong>service name</strong> or use default. Then click on the <strong>Create</strong> button.</p>
+<p> <img src="images/create.png" alt="create"></p>
+</li>
+<li><p>After creating the service, select <strong>Service Credentials</strong></p>
+<p> <img src="images/service_credential.png" alt="service credentials"></p>
+</li>
+<li><p>Create <strong>New Credentials</strong>, enter preferred name or use default. </p>
+<p> <img src="images/credentials_show.png" alt="credentials"></p>
+</li>
 </ol>
 
                                 
@@ -474,10 +476,10 @@ If you want to use the sample <a href="IKS/kafka-mirrormaker.yaml">YAML file</a>
 
             
                 
-                <a href="../kafka-connect/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: kafka-connect">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="../kafka-nodejs-console-sample/docs/Local.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Local setup">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -486,7 +488,7 @@ If you want to use the sample <a href="IKS/kafka-mirrormaker.yaml">YAML file</a>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"kafka-mirrormaker","level":"5.2","depth":1,"next":{"title":"Apache Kafka","level":"5.3","depth":1,"url":"https://developer.ibm.com/articles/an-introduction-to-apache-kafka/","ref":"https://developer.ibm.com/articles/an-introduction-to-apache-kafka/","articles":[]},"previous":{"title":"kafka-connect","level":"5.1","depth":1,"path":"kafka-connect/README.md","ref":"kafka-connect/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-mirrormaker/README.md","mtime":"2020-07-02T03:56:54.985Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T07:16:05.693Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Create Event Streams Service in IBM Cloud","level":"2.2","depth":1,"next":{"title":"Local setup","level":"3.1","depth":1,"path":"kafka-nodejs-console-sample/docs/Local.md","ref":"kafka-nodejs-console-sample/docs/Local.md","articles":[]},"previous":{"title":"IBM Event Streams","level":"2.1","depth":1,"url":"https://ibm.github.io/event-streams","ref":"https://ibm.github.io/event-streams","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ibm-event-streams/ibm-event-streams.md","mtime":"2020-07-16T07:12:47.361Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T07:16:05.693Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
