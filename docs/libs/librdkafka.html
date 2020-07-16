@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>kafka-connect · GitBook</title>
+        <title>Build librdkafka · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../kafka-mirrormaker/" />
     
-    
-    <link rel="prev" href="../kafka-python-console-sample/docs/Kubernetes_Service.html" />
+    <link rel="prev" href="../kafka-mirrormaker/" />
     
 
     </head>
@@ -371,9 +369,9 @@
         
         
     
-        <li class="chapter active" data-level="5.1" data-path="./">
+        <li class="chapter " data-level="5.1" data-path="../kafka-connect/">
             
-                <a href="./">
+                <a href="../kafka-connect/">
             
                     
                     kafka-connect
@@ -397,9 +395,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../libs/librdkafka.html">
+        <li class="chapter active" data-level="5.3" data-path="librdkafka.html">
             
-                <a href="../libs/librdkafka.html">
+                <a href="librdkafka.html">
             
                     
                     Build librdkafka
@@ -466,7 +464,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >kafka-connect</a>
+        <a href=".." >Build librdkafka</a>
     </h1>
 </div>
 
@@ -481,25 +479,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="kafka-connect">kafka-connect</h1>
-<p>This repository contains the artifacts required to build the <code>ibmcom/eventstreams-kafkaconnect</code> Docker image.</p>
-<p>This image contains the Kafka Connect runtime and the <a href="https://github.com/ibm-messaging/kafka-connect-ibmcos-sink" target="_blank">IBM Cloud Object Storage sink connector</a> and the <a href="https://github.com/ibm-messaging/kafka-connect-mq-source" target="_blank">IBM MQ source connector</a>.</p>
-<p>A prebuilt image is provided on DockerHub: <a href="https://hub.docker.com/r/ibmcom/eventstreams-kafkaconnect" target="_blank">https://hub.docker.com/r/ibmcom/eventstreams-kafkaconnect</a>.</p>
-<h2 id="running-the-image-in-kubernetes">Running the image in Kubernetes</h2>
-<p>Instructions for running the <code>eventstreams-kafkaconnect</code> image in Kubernetes can be found <a href="IKS/README.md">here</a>.</p>
-<h2 id="building-the-image">Building the image</h2>
-<p>In case you don&apos;t want to use the image we provide, you can build an image by completing these steps:</p>
-<ol>
-<li><p>Run the <code>build.sh</code> script to download and compile the connectors:</p>
-<pre><code class="lang-shell"> ./build.sh
-</code></pre>
-</li>
-<li><p>Build the docker image:</p>
-<pre><code class="lang-shell"> docker build .
-</code></pre>
-<p>If you want to use the sample <a href="IKS/kafka-connect.yaml">YAML file</a>, be sure to update the image name with your own image name.</p>
-</li>
-</ol>
+                                <h1 id="how-to-build-librdkafka-for-use-with-ibm-event-streams-for-ibm-cloud">How to build librdkafka for use with IBM Event Streams for IBM Cloud</h1>
+<p><a href="https://github.com/edenhill/librdkafka" target="_blank">Librdkafka</a> is a very good Kafka client written in C/C++. In fact, the clients we used in our Node.js and Python samples, node-rdkafka and confluent-kafka-python respectively, are actually languages bindings on top of librdkafka.</p>
+<p>Librdkafka is very flexible but in order to be able to work with Event Streams for IBM Cloud it needs to be built with the correct dependencies.</p>
+<h2 id="linux-dependencies">Linux dependencies</h2>
+<ul>
+<li>openssl-dev</li>
+<li>libsasl2-dev</li>
+<li>libsasl2-modules</li>
+<li>C++ toolchain</li>
+</ul>
+<h2 id="macos-dependencies">macOS dependencies</h2>
+<ul>
+<li><a href="http://brew.sh/" target="_blank">Brew</a></li>
+<li><a href="https://developer.apple.com/xcode/" target="_blank">Apple Xcode command line tools</a></li>
+<li><code>openssl</code> via Brew</li>
+<li>Export <code>CPPFLAGS=-I/usr/local/opt/openssl/include</code> and <code>LDFLAGS=-L/usr/local/opt/openssl/lib</code></li>
+<li>Open Keychain Access, export all certificates in System Roots to a single .pem file</li>
+</ul>
 
                                 
                                 </section>
@@ -527,14 +524,10 @@
 
             
                 
-                <a href="../kafka-python-console-sample/docs/Kubernetes_Service.html" class="navigation navigation-prev " aria-label="Previous page: Kubernetes Service">
+                <a href="../kafka-mirrormaker/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: kafka-mirrormaker">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../kafka-mirrormaker/" class="navigation navigation-next " aria-label="Next page: kafka-mirrormaker">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -543,7 +536,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"kafka-connect","level":"5.1","depth":1,"next":{"title":"kafka-mirrormaker","level":"5.2","depth":1,"path":"kafka-mirrormaker/README.md","ref":"kafka-mirrormaker/README.md","articles":[]},"previous":{"title":"Kubernetes Service","level":"4.4","depth":1,"path":"kafka-python-console-sample/docs/Kubernetes_Service.md","ref":"kafka-python-console-sample/docs/Kubernetes_Service.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka-connect/README.md","mtime":"2020-07-02T03:56:54.966Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T08:53:38.311Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Build librdkafka","level":"5.3","depth":1,"next":{"title":"Apache Kafka","level":"5.4","depth":1,"url":"https://developer.ibm.com/articles/an-introduction-to-apache-kafka/","ref":"https://developer.ibm.com/articles/an-introduction-to-apache-kafka/","articles":[]},"previous":{"title":"kafka-mirrormaker","level":"5.2","depth":1,"path":"kafka-mirrormaker/README.md","ref":"kafka-mirrormaker/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"libs/librdkafka.md","mtime":"2020-07-02T03:56:54.950Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T08:53:38.311Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

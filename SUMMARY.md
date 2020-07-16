@@ -35,7 +35,8 @@
 ## Other Examples and Tutorials
 
 - [kafka-connect](kafka-connect/README.md)
-- [kafka-mirrormaker](kafka-mirrormaker/README.md) 
+- [kafka-mirrormaker](kafka-mirrormaker/README.md)
+- [Build librdkafka](libs/librdkafka.md)
 - [Apache Kafka](https://developer.ibm.com/articles/an-introduction-to-apache-kafka/)
 - [IBM Messaging Github Repo](https://github.com/ibm-messaging)
 
