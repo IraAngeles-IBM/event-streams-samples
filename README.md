@@ -21,13 +21,13 @@ In each sample, we demonstrate a single connection path for both our Classic and
 
 ## Our APIs and Sample Applications
 
-### Kafka API (recommended):
-* [kafka-java-console-sample](SUMMARY.md) : Sample Java console application using the Event Streams for IBM Cloud Kafka API
-* [kafka-java-liberty-sample](kafka-java-liberty-sample/README.md) : Sample IBM Websphere Liberty profile application using the Event Streams for IBM Cloud Kafka API
-* [kafka-nodejs-console-sample](SUMMARY.md) : Sample Node.js console application using the Event Streams for IBM Cloud Kafka API
-* [kafka-python-console-sample](kafka-python-console-sample/README.md) : Sample Python console application using the Event Streams for IBM Cloud Kafka API
-* [kafka-connect](kafka-connect/README.md) : Sample Docker image with Kafka Connect
-* [kafka-mirrormaker](kafka-mirrormaker/README.md) : Sample Docker image with Kafka Mirror Maker
+### [Kafka API](SUMMARY.md) (recommended):
+* kafka-java-console-sample : Sample Java console application using the Event Streams for IBM Cloud Kafka API
+* kafka-java-liberty-sample : Sample IBM Websphere Liberty profile application using the Event Streams for IBM Cloud Kafka API
+* kafka-nodejs-console-sample : Sample Node.js console application using the Event Streams for IBM Cloud Kafka API
+* kafka-python-console-sample : Sample Python console application using the Event Streams for IBM Cloud Kafka API
+* kafka-connect : Sample Docker image with Kafka Connect
+* kafka-mirrormaker : Sample Docker image with Kafka Mirror Maker
 
 ### Spring Kafka:
 * [spring kafka tutorial](https://developer.ibm.com/tutorials/use-spring-kafka-to-access-an-event-streams-service/) : Tutorial to quickly get you up and running using IBM Event Streams. 
