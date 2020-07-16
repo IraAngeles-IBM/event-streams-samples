@@ -7,7 +7,9 @@
 ## IBM Event Streams
 
 - [IBM Event Streams](https://ibm.github.io/event-streams)
-- [Create Event Streams Service in IBM Cloud](ibm-event-streams/ibm-event-streams.md)
+- Pre-requisite to Workshop
+    - [Create Event Streams Service in IBM Cloud](ibm-event-streams/ibm-event-streams.md)
+    - [Clone sample code from Github repository](https://github.com/IraAngeles-IBM/event-streams-samples)
 
 ## IBM Event Streams for Node.js 
 
