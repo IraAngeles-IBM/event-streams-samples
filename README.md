@@ -22,9 +22,9 @@ In each sample, we demonstrate a single connection path for both our Classic and
 ## Our APIs and Sample Applications
 
 ### Kafka API (recommended):
-* [kafka-java-console-sample](kafka-java-console-sample/README.md) : Sample Java console application using the Event Streams for IBM Cloud Kafka API
+* [kafka-java-console-sample](SUMMARY.md) : Sample Java console application using the Event Streams for IBM Cloud Kafka API
 * [kafka-java-liberty-sample](kafka-java-liberty-sample/README.md) : Sample IBM Websphere Liberty profile application using the Event Streams for IBM Cloud Kafka API
-* [kafka-nodejs-console-sample](kafka-nodejs-console-sample/README.md) : Sample Node.js console application using the Event Streams for IBM Cloud Kafka API
+* [kafka-nodejs-console-sample](SUMMARY.md) : Sample Node.js console application using the Event Streams for IBM Cloud Kafka API
 * [kafka-python-console-sample](kafka-python-console-sample/README.md) : Sample Python console application using the Event Streams for IBM Cloud Kafka API
 * [kafka-connect](kafka-connect/README.md) : Sample Docker image with Kafka Connect
 * [kafka-mirrormaker](kafka-mirrormaker/README.md) : Sample Docker image with Kafka Mirror Maker
