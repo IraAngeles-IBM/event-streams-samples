@@ -29,6 +29,7 @@
 
 - [kafka-connect](kafka-connect/README.md)
 - [kafka-mirrormaker](kafka-mirrormaker/README.md) 
+- [Apache Kafka](https://developer.ibm.com/articles/an-introduction-to-apache-kafka/)
 - [IBM Event Streams](https://ibm.github.io/event-streams/ß)
 - [IBM Messaging Github Repo](https://github.com/ibm-messaging)
 
